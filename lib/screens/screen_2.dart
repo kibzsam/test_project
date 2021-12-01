@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:test_prj/providers/horizontal_items.dart';
 
 class Screen2 extends StatelessWidget {
   const Screen2({Key? key}) : super(key: key);
@@ -18,8 +19,11 @@ class Screen2 extends StatelessWidget {
         height: height * 0.2,
         width: double.infinity,
         child: ListView.builder(itemBuilder: (context, index) {
-          itemCount:
-          return ListTile();
+          return ListTile(
+            title: Text(
+              HorizontalItemsProvider().generateItemAt(index),
+            ),
+          );
         }),
       ),
     ));

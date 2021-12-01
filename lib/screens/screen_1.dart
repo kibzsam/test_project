@@ -11,6 +11,8 @@ class Screen1 extends StatefulWidget {
 }
 
 class _Screen1State extends State<Screen1> {
+  final _scrollController = ScrollController();
+
   @override
   void initState() {
     super.initState();
@@ -25,34 +27,31 @@ class _Screen1State extends State<Screen1> {
         return AlertDialog(
           titlePadding: EdgeInsets.zero,
           contentPadding: EdgeInsets.zero,
+          insetPadding: const EdgeInsets.all(16),
           title: Stack(
             children: [
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 16.0),
+                padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                          child: const Text(
-                            'Title',
-                            style: TextStyle(fontSize: 14.0),
-                          ),
-                        ),
-                      ],
-                    ),
                     Container(
-                      child: const Center(
-                        child: Text('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin viverra ligula orci.',
-                            style: TextStyle(fontSize: 14)),
+                      child: const Text(
+                        'Title',
+                        style: TextStyle(fontSize: 24.0),
                       ),
+                    ),
+                    const SizedBox(height: 8.0),
+                    Container(
+                      child: const Text('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin viverra ligula orci.',
+                          style: TextStyle(fontSize: 14)),
                     ),
                   ],
                 ),
               ),
-              Align(
-                alignment: Alignment.topRight,
+              Positioned(
+                top: 10,
+                right: 10,
                 child: IconButton(
                   onPressed: () => Navigator.pop(context),
                   icon: const Icon(Icons.close, color: Colors.grey),
@@ -67,20 +66,25 @@ class _Screen1State extends State<Screen1> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Container(
-                  padding: const EdgeInsets.only(top: 8, right: 8, left: 8),
+                  padding: const EdgeInsets.only(top: 8, right: 8, left: 16),
                   decoration: const BoxDecoration(color: Colors.grey),
                   height: MediaQuery.of(context).size.height * 0.44,
-                  child: SingleChildScrollView(
-                    child: ListBody(
-                      children: [
-                        Container(
-                          child: const Text(
-                            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin viverra ligula orci. '
-                            'Nullam tellus ante, sagittis at cursus facilisis, luctus ut tellus. Etiam eget lacus lacus. Nunc tincidunt, lorem nec pharetra molestie, urna quam elementum nulla, nec ultrices neque justo sit amet massa. Duis ut accumsan mauris. Duis rutrum eget ante ut lobortis. Duis enim ligula, dignissim sed lacus id, mattis pellentesque odio. Duis eleifend pulvinar ex. '
-                            'Fusce egestas urna sapien. Vestibulum sed nibh fringilla, porttitor neque et, dapibus mauris. Fusce egestas urna sapien. Vestibulum sed nibh fringilla, porttitor neque et, dapibus mauris.Fusce egestas urna sapien. Vestibulum sed nibh fringilla, porttitor neque et, dapibus mauris. Fusce egestas urna sapien. Vestibulum sed nibh fringilla, porttitor neque et, dapibus mauris. Fusce egestas urna sapien. Vestibulum sed nibh fringilla, porttitor neque et, dapibus mauris.',
+                  child: Scrollbar(
+                    controller: _scrollController,
+                    child: SingleChildScrollView(
+                      controller: _scrollController,
+                      child: ListBody(
+                        children: [
+                          Container(
+                            padding: const EdgeInsets.only(right: 8),
+                            child: const Text(
+                              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin viverra ligula orci. Etiam eget lacus lacus. Nunc tincidunt, lorem nec pharetra molestie'
+                              'Nullam tellus ante, sagittis at cursus facilisis, luctus ut tellus. Etiam eget lacus lacus. Nunc tincidunt, lorem nec pharetra molestie, urna quam elementum nulla, nec ultrices neque justo sit amet massa. Duis ut accumsan mauris. Duis rutrum eget ante ut lobortis. Duis enim ligula, dignissim sed lacus id, mattis pellentesque odio. Duis eleifend pulvinar ex. '
+                              'Fusce egestas urna sapien. Vestibulum sed nibh fringilla, porttitor neque et, dapibus mauris. Fusce egestas urna sapien. Vestibulum sed nibh fringilla, porttitor neque et, dapibus mauris.Fusce egestas urna sapien. Vestibulum sed nibh fringilla, porttitor neque et, dapibus mauris. Fusce egestas urna sapien. Vestibulum sed nibh fringilla, porttitor neque et, dapibus mauris. Fusce egestas urna sapien. Vestibulum sed nibh fringilla, porttitor neque et, dapibus mauris.',
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 )
@@ -92,20 +96,23 @@ class _Screen1State extends State<Screen1> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  TextButton(
-                    style: TextButton.styleFrom(
-                      shape: const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(16.0),
+                  ConstrainedBox(
+                    constraints: BoxConstraints(minWidth: MediaQuery.of(context).size.width * 0.05),
+                    child: TextButton(
+                      style: TextButton.styleFrom(
+                        shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(16.0),
+                          ),
                         ),
+                        padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 18),
+                        primary: Colors.white,
+                        textStyle: const TextStyle(fontSize: 12.0),
+                        backgroundColor: Colors.purple,
                       ),
-                      padding: const EdgeInsets.all(8.0),
-                      primary: Colors.white,
-                      textStyle: const TextStyle(fontSize: 10.0),
-                      backgroundColor: Colors.purple,
+                      onPressed: () {},
+                      child: Text('Test Button'.toUpperCase()),
                     ),
-                    onPressed: () {},
-                    child: Text('Test Button'.toUpperCase()),
                   ),
                 ],
               ),
