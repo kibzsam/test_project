@@ -24,15 +24,23 @@ class Screen2 extends StatelessWidget {
                 SizedBox(
                     height: 30,
                     child: Row(
-                      children: const [Icon(Icons.call)],
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(6.0),
+                          child: IconButton(
+                            onPressed: () => Navigator.pop(context),
+                            icon: const Icon(Icons.close, color: Colors.black),
+                          ),
+                        ),
+                      ],
                     )),
                 Padding(
                   padding: const EdgeInsets.only(left: 10),
                   child: Text(
                       "Section 1 (${HorizontalItemsProvider().itemsCount})",
-                  style: const TextStyle( fontSize: 10, fontWeight: FontWeight.bold)
-                  ),
-
+                      style: const TextStyle(
+                          fontSize: 20, fontWeight: FontWeight.w700)),
                 ),
                 Container(
                   height: height * 0.21,
@@ -62,16 +70,22 @@ class Screen2 extends StatelessWidget {
                               ],
                             ),
                             child: Center(
-                                child: Text(HorizontalItemsProvider()
-                                    .generateItemAt(index))),
+                                child: Text(
+                                    HorizontalItemsProvider()
+                                        .generateItemAt(index),
+                                    style: const TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.w700))),
                           ),
                         );
                       }),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 10, bottom: 15),
-                  child:
-                      Text("Section 2 (${VerticalItemsProvider().itemsCount})"),
+                  padding: const EdgeInsets.only(left: 10, bottom: 5),
+                  child: Text(
+                      "Section 2 (${VerticalItemsProvider().itemsCount})",
+                      style: const TextStyle(
+                          fontSize: 20, fontWeight: FontWeight.w700)),
                 ),
                 Container(
                   height: height,
@@ -80,28 +94,31 @@ class Screen2 extends StatelessWidget {
                       scrollDirection: Axis.vertical,
                       padding: const EdgeInsets.symmetric(
                           vertical: 20, horizontal: 10),
-                      itemCount: HorizontalItemsProvider().itemsCount, //int
+                      itemCount: VerticalItemsProvider().itemsCount, //int
                       itemBuilder: (context, index) {
                         return Padding(
                           padding: const EdgeInsets.symmetric(vertical: 8.0),
                           child: Container(
-                            height: height * 0.17,
-                            decoration: const BoxDecoration(
-                              color: Colors.white,
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20)),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.black38,
-                                  blurRadius: 8.0,
-                                  spreadRadius: 1.0,
-                                )
-                              ],
-                            ),
-                            child: Center(
-                                child: Text(HorizontalItemsProvider()
-                                    .generateItemAt(index))),
-                          ),
+                              height: height * 0.17,
+                              decoration: const BoxDecoration(
+                                color: Colors.white,
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(20)),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.black38,
+                                    blurRadius: 8.0,
+                                    spreadRadius: 1.0,
+                                  )
+                                ],
+                              ),
+                              child: Center(
+                                  child: Text(
+                                      VerticalItemsProvider()
+                                          .generateItemAt(index),
+                                      style: const TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.w700)))),
                         );
                       }),
                 ),
