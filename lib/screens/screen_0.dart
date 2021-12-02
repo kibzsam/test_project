@@ -3,7 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:gap/gap.dart';
 import 'package:test_prj/screens/screen_1.dart';
 
-import '../constant/colors.dart';
+import '../constants/colors.dart';
 import 'screen_2.dart';
 
 class Screen0 extends StatelessWidget {

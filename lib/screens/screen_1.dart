@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:test_prj/constants/string.dart';
 
 class Screen1 extends StatefulWidget {
   const Screen1({Key? key}) : super(key: key);
@@ -27,7 +28,7 @@ class _Screen1State extends State<Screen1> {
         return AlertDialog(
           titlePadding: EdgeInsets.zero,
           contentPadding: EdgeInsets.zero,
-          insetPadding: const EdgeInsets.all(16),
+          insetPadding: const EdgeInsets.all(10),
           title: Stack(
             children: [
               Container(
@@ -36,15 +37,14 @@ class _Screen1State extends State<Screen1> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Container(
-                      child: const Text(
-                        'Title',
-                        style: TextStyle(fontSize: 24.0),
+                      child: Text(
+                        Constants.title,
+                        style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w800),
                       ),
                     ),
                     const SizedBox(height: 8.0),
                     Container(
-                      child: const Text('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin viverra ligula orci.',
-                          style: TextStyle(fontSize: 14)),
+                      child: Text(Constants.subtitle, style: const TextStyle(fontSize: 14)),
                     ),
                   ],
                 ),
@@ -76,12 +76,8 @@ class _Screen1State extends State<Screen1> {
                       child: ListBody(
                         children: [
                           Container(
-                            padding: const EdgeInsets.only(right: 8),
-                            child: const Text(
-                              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin viverra ligula orci. Etiam eget lacus lacus. Nunc tincidunt, lorem nec pharetra molestie'
-                              'Nullam tellus ante, sagittis at cursus facilisis, luctus ut tellus. Etiam eget lacus lacus. Nunc tincidunt, lorem nec pharetra molestie, urna quam elementum nulla, nec ultrices neque justo sit amet massa. Duis ut accumsan mauris. Duis rutrum eget ante ut lobortis. Duis enim ligula, dignissim sed lacus id, mattis pellentesque odio. Duis eleifend pulvinar ex. '
-                              'Fusce egestas urna sapien. Vestibulum sed nibh fringilla, porttitor neque et, dapibus mauris. Fusce egestas urna sapien. Vestibulum sed nibh fringilla, porttitor neque et, dapibus mauris.Fusce egestas urna sapien. Vestibulum sed nibh fringilla, porttitor neque et, dapibus mauris. Fusce egestas urna sapien. Vestibulum sed nibh fringilla, porttitor neque et, dapibus mauris. Fusce egestas urna sapien. Vestibulum sed nibh fringilla, porttitor neque et, dapibus mauris.',
-                            ),
+                            // padding: const EdgeInsets.only(right: 8),
+                            child: Text(Constants.paragraph),
                           ),
                         ],
                       ),
@@ -111,7 +107,7 @@ class _Screen1State extends State<Screen1> {
                         backgroundColor: Colors.purple,
                       ),
                       onPressed: () {},
-                      child: Text('Test Button'.toUpperCase()),
+                      child: Text(Constants.buttonName.toUpperCase()),
                     ),
                   ),
                 ],
